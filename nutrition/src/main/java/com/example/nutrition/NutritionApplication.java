@@ -1,13 +1,13 @@
-package com.example.src;
+package com.example.nutrition;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SrcApplication {
+public class NutritionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SrcApplication.class, args);
+		SpringApplication.run(NutritionApplication.class, args);
 	}
 
 }

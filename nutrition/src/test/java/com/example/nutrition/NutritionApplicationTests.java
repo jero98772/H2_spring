@@ -1,10 +1,10 @@
-package com.example.src;
+package com.example.nutrition;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SrcApplicationTests {
+class NutritionApplicationTests {
 
 	@Test
 	void contextLoads() {
