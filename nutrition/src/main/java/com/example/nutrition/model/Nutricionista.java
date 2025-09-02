@@ -33,24 +33,15 @@ public class Nutricionista {
     @Column(name = "activo", nullable = false)
     private boolean activo = true;
 
-    @OneToMany(mappedBy = "nutricionista", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Nota> notas = new ArrayList<>();
-
     // ================== RELACIONES ==================
     // Un Nutricionista tiene muchos Pacientes
     @OneToMany(mappedBy = "nutricionista", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Paciente> pacientes = new ArrayList<>();
 
-    // Método helper para mantener consistencia
-    public void addPaciente(Paciente paciente) {
-        pacientes.add(paciente);
-        paciente.setNutricionista(this);
-    }
-
-    public void addNota(Nota nota) {
-        notas.add(nota);
-        nota.setNutricionista(this);
-    }
+    // Relación EAGER con Notas - Se cargan inmediatamente (ejemplo educativo)
+    // En producción, considera usar LAZY para mejor performance
+    @OneToMany(mappedBy = "nutricionista", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Nota> notas = new ArrayList<>();
 
     // ================== CONSTRUCTORES ==================
     public Nutricionista() {
@@ -63,6 +54,24 @@ public class Nutricionista {
         this.email = email;
     }
 
+    // ================== MÉTODOS HELPER ==================
+    // Método helper para añadir pacientes manteniendo la consistencia bidireccional
+    public void addPaciente(Paciente paciente) {
+        pacientes.add(paciente);
+        paciente.setNutricionista(this);
+    }
+
+    // Método helper para añadir notas manteniendo la consistencia bidireccional
+    public void addNota(Nota nota) {
+        notas.add(nota);
+        nota.setNutricionista(this);
+    }
+
+    // Método helper para remover notas
+    public void removeNota(Nota nota) {
+        notas.remove(nota);
+        nota.setNutricionista(null);
+    }
 
     // ================== GETTERS & SETTERS ==================
     public Long getId() { return id; }

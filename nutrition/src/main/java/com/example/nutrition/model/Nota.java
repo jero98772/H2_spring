@@ -67,3 +67,5 @@ public class Nota {
     public Nutricionista getNutricionista() { return nutricionista; }
     public void setNutricionista(Nutricionista nutricionista) { this.nutricionista = nutricionista; }
 }
+
+
